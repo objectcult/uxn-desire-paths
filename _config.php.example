@@ -1,0 +1,28 @@
+<?php
+$__RETURN_CODES = array();
+$__RETURN_CODES['LOGIN FAIL'] = 0;
+$__RETURN_CODES['NO USER'] = -1;
+$__RETURN_CODES['BAD PARAMETERS'] = -1;
+$__RETURN_CODES['USER EXISTS'] = -2;
+$__RETURN_CODES['TOOL EXISTS'] = -2;
+$__RETURN_CODES['REGISTER FAIL'] = -3;
+$__RETURN_CODES['TOOL EDIT FAIL'] = -3;
+$__RETURN_CODES['ACTIVITY EDIT FAIL'] = -3;
+$__RETURN_CODES['QUERY FAIL'] = -4;
+$__HOMEPAGE = "index.php";
+$__SERVER_NAME = "your remote server name here";
+$__DB_USER = "your remote database user name";
+$__DB_PASSWORD = "your remote database password";
+$__DB_NAME = "your remote database name";
+$__LOCAL_DB_SERVER_NAME = "your remote database server name here";
+$__LOCAL_DB_USER = "your local database user name";
+$__LOCAL_DB_PASSWORD = "your local database password";
+$__LOCAL_DB_NAME = "your local database name";
+$__LOCAL = strpos($_SERVER['SERVER_NAME'],$__SERVER_NAME)===false;
+$__DBSERVER = (!$__LOCAL)?$_ENV['DATABASE_SERVER']:$__LOCAL_DB_SERVER_NAME;
+$__DBUSER = (!$__LOCAL)?$__DB_USER:$__LOCAL_DB_USER;
+$__DBPW = (!$__LOCAL)?$__DB_PASSOWRD:$__LOCAL_DB_PASSWORD;
+$__DBNAME = (!$__LOCAL)?$__DB_NAME:$__LOCAL_DB_NAME;
+date_default_timezone_set('America/New_York');
+$__DEFAULT_NOTE = "Your comment here...";
+?>

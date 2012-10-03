@@ -1,5 +1,7 @@
 <?php
 
+require_once('_config.php');
+
 $__RETURN_CODES = array();
 $__RETURN_CODES['LOGIN FAIL'] = 0;
 $__RETURN_CODES['NO USER'] = -1;
@@ -11,13 +13,6 @@ $__RETURN_CODES['TOOL EDIT FAIL'] = -3;
 $__RETURN_CODES['ACTIVITY EDIT FAIL'] = -3;
 $__RETURN_CODES['QUERY FAIL'] = -4;
 $__HOMEPAGE = "index.php";
-$__LOCAL = strpos($_SERVER['SERVER_NAME'],'objectcult')===false;
-$__DBSERVER = (!$__LOCAL)?$_ENV['DATABASE_SERVER']:'';
-$__DBUSER = (!$__LOCAL)?'db12836':'ezpublish';
-$__DBPW = (!$__LOCAL)?'0000PPss':'';
-$__DBNAME = (!$__LOCAL)?'db12836_uxn':'uxn';
-date_default_timezone_set('America/New_York');
-$__DEFAULT_NOTE = "Your comment here...";
 
 session_start();
 $_SESSION['status_msg'] = "";
