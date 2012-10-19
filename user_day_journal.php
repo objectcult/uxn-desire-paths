@@ -395,6 +395,7 @@ function toggleInfobox() {
 			$(visibleInfobox).hide();
 			//$(visibleInfobox).css("z-index",-1);
 		}
+		unsavedChanges = false;
 		$(boxid).show();
 		$(boxid).css("z-index",1000);
 		visibleInfobox = boxid;
@@ -533,6 +534,20 @@ jsPlumb.ready(function() {
 		jsPlumb.bind("jsPlumbConnection", makeConnectionUI);
 		jsPlumb.bind("beforeDrop", confirmUniqueConnectionUI);
 	}
+	// check for unsaved changes before leaving the page...
+	$(window).bind("beforeunload", function() {
+		if (unsavedChanges) {
+			if (!confirm("You have unsaved changes. Are you sure you want to continue?\n\nClick 'OK' to discard changes and continue.")) {
+				return false;
+			}
+		}
+	});
+	// ...or closing the window
+	window.onbeforeunload = function() {
+			if (unsavedChanges) {
+				return "You have unsaved changes. Are you sure you want to leave?";
+			}
+		};
 });
 
 </script>
@@ -640,7 +655,7 @@ if (userRole()=="admin") {
 
 <div id="tool_template" style="display:none;">
 	<form>
-	<textarea name="note" rows="6" cols="45"></textarea><br />
+	<textarea name="note" rows="6" cols="45" onkeyup="setDirtyBit()"></textarea><br />
 	<table border="0" width="100%">
 	<tr><td><span style="font-weight:bold; font-variant: small-caps;">difficulty:</span></td>
 	<td style="text-align:right">easy</td><td><input type="radio" name="dod" value="0" selected> <input type="radio" name="dod" value="1"> <input type="radio" name="dod" value="2"> <input type="radio" name="dod" value="3"> <input type="radio" name="dod" value="4"></td><td>difficult</td><td><input type="button" name="save" value="SAVE" disabled></td></tr>
